@@ -101,15 +101,14 @@ class PostController extends Controller
     public function update(StorePostRequest $request, Post $post)
     {
         //
-        /* $Post = new Post();
-        $Post->name = $request->name;
-        $Post->description = $request->description;
-        $Post->src = $request->src;
-        $Post->used_technologies = $request->used_technologies;
-        $Post->link = $request->link;
-
-        $Post->save(); */
+        
         $request->validated();
+
+        
+        if($request->hasFile('src')) {
+            $path = Storage::disk('public')->put('images', $request->src);
+            $post->src = $path;
+        }
 
         $post->update($request->all());
 

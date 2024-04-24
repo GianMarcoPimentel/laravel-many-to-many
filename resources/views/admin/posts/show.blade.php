@@ -15,6 +15,16 @@
           <p class="card-text">Di cosa tratta: {{$post->description}}</p>
           <p>Per visualizzare il progetto : <a href="#" class="btn btn-success">{{$post->link}}</a></p>
           <p>Tipologia : {{$post->type?->title}}</p>
+          
+
+            <p>Tecnologie usate : </p>
+            <div class="d-flex gap-2">
+            @foreach($post->technologies as $technology)
+            
+            <span class="badge rounded-pill text-bg-light">{{$technology->name}}</span>
+            @endforeach
+            </div>
+          
         </div>
       
       </div>
