@@ -44,7 +44,7 @@
 {{--       <img src="{{asset('storage/' . $post->src)}}" class="card-img-top" alt="Progetto : {{$post->id}}">
  --}}
       <label class="form-label" for="src">Immagine</label>
-      <input type="file" class="form-control @error('src') is-invalid @enderror" id="src" name=" src" value="{{old('src') ?? $post->src}}" >
+      <input type="file" class="form-control @error('src') is-invalid @enderror" id="src" name="src" value="{{old('src') ?? $post->src}}" >
     </div>
     @error('src')
     <div class="alert alert-danger">

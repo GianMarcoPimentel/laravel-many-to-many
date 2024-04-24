@@ -101,7 +101,7 @@ class PostController extends Controller
     public function update(StorePostRequest $request, Post $post)
     {
         //
-        
+        //dd($request);
         $request->validated();
 
         
