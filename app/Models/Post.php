@@ -15,7 +15,6 @@ class Post extends Model
         'name',
         'description',
         'src',
-        'used_technologies',
         'link',
         'type_id',
     ];
@@ -25,5 +24,9 @@ class Post extends Model
     //il progeto corrisponde a una sola categoria
     public function type(){
         return $this->belongsTo(Type::class);
+    }
+
+    public function technologies(){
+        return $this->belongsToMany(Technology::class);
     }
 }
