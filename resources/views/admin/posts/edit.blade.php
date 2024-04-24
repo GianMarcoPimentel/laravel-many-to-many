@@ -5,7 +5,7 @@
 <div class="container py-5">
     <h1>Modifica il tuo progetto</h1>
 
-<form action="{{ route('admin.posts.update', $post->id)}}" method="POST">
+<form action="{{ route('admin.posts.update', $post->id)}}" method="POST" enctype='multipart/form-data'>
     @csrf
     @method('PUT')
 

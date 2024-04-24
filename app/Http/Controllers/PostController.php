@@ -113,6 +113,9 @@ class PostController extends Controller
 
         $post->update($request->all());
 
+       // modifico le tecnologie collegate ai post
+       $post->technologies()->sync($request->technologies);
+
         return redirect()->route('admin.posts.show', $post->id);
         
         
