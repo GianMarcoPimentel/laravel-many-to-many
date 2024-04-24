@@ -64,14 +64,41 @@
 
           <select name="type_id" id="type_id">
 
-            @foreach ($types as $type)
             <option value="">#</option>
-            <option value="{{$type->id}}" {{ $type->id == old('type_id') ? 'selected' : '' }}>{{$type->title}}</option>
-                
+            @foreach ($types as $type)
+            <option value="{{$type->id}}" {{ $type->id == old('type_id') ? 'selected' : '' }}>{{$type->title}}</option>    
             @endforeach
           </select>
 
         </div>
+
+        {{--@dump($technologies)--}}
+        <div class="mb-3">
+          <label class="mb-3" for="">Tecnologie usate :</label>
+          <div class="d-flex gap-4">
+
+              @foreach($technologies as $technology)
+    
+              <input 
+              type="checkbox"
+              id="{{$technology->id}}"
+              name="technologies[]"
+              value="{{$technology->id}}"
+              class="form-check-input "
+              {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+
+              >
+              <label 
+              for="{{$technology->id}}"
+              class="form-check-label "
+
+              >
+              {{ $technology->name }}</label>
+              @endforeach
+
+          </div>
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Aggiungi Progetto</button>
       </form>

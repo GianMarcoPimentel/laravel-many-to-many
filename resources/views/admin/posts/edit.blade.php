@@ -41,8 +41,8 @@
 
     
     <div class="mb-3 ">
-      <img src="{{asset('storage/' . $post->src)}}" class="card-img-top" alt="Progetto : {{$post->id}}">
-
+{{--       <img src="{{asset('storage/' . $post->src)}}" class="card-img-top" alt="Progetto : {{$post->id}}">
+ --}}
       <label class="form-label" for="src">Immagine</label>
       <input type="file" class="form-control @error('src') is-invalid @enderror" id="src" name=" src" value="{{old('src') ?? $post->src}}" >
     </div>
@@ -81,6 +81,49 @@
       
     </div>
 
+    <div class="mb-3">
+      <label class="mb-3" for="">Tecnologie usate :</label>
+      <div class="d-flex gap-3">
+
+          @foreach($technologies as $technology)
+        <div class="form-check">
+
+          {{-- conotrllo se ho errori , quindi sto ricevendo parametri old() --}}
+          @if($errors->any())
+          {{--  se ho errori , quindi parametro old() --}}
+          <input 
+          type="checkbox"
+          id="{{$technology->id}}"
+          name="technologies[]"
+          value="{{$technology->id}}"
+          class="form-check-input "
+          {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+
+          >
+          @else
+          {{-- se non ho errori , quindi old() nullo--}}
+          <input 
+          type="checkbox"
+          id="{{$technology->id}}"
+          name="technologies[]"
+          value="{{$technology->id}}"
+          class="form-check-input "
+          {{ $post->technologies->contains($technology) ? 'checked' : '' }}
+
+          >
+          @endif
+          <label 
+          for="{{$technology->id}}"
+          class="form-check-label "
+
+          >
+          {{ $technology->name }}</label>
+
+        </div>
+          @endforeach
+          
+        </div>
+    </div>
 
     <button type="submit" class="btn btn-primary">Salva</button>
   </form>

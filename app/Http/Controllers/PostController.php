@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -32,8 +33,10 @@ class PostController extends Controller
     {
         //
         $types = Type::all();
+        
+        $technologies = Technology::all();
 
-        return view('admin.posts.create', compact('types'));
+        return view('admin.posts.create', compact('types','technologies'));
     }
 
     /**
@@ -42,7 +45,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         //
-        //dd($request);
+    //dd($request);
          /* $newPost = new Post();
         $newPost->name = $request->name;
         $newPost->description = $request->description;
@@ -64,6 +67,8 @@ class PostController extends Controller
 
         $newPost->save();
 
+        $newPost->technologies()->attach($request->technologies);
+
         return redirect()->route('admin.posts.show', $newPost->id);
     }
 
@@ -73,7 +78,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
-        dd($post->technologies);
+        //dd($post->technologies);
         return view('admin.posts.show',compact('post'));
     }
 
@@ -84,8 +89,10 @@ class PostController extends Controller
     {
         //
         $types = Type::all();
+
+        $technologies = Technology::all();
         
-        return view('admin.posts.edit', compact('post','types'));
+        return view('admin.posts.edit', compact('post','types','technologies'));
     }
 
     /**
