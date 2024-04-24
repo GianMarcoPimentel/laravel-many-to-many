@@ -26,7 +26,6 @@ class StorePostRequest extends FormRequest
             'name' => 'required|max:255',
             'description' => 'required|max:2000',
             'src' => 'file|max:1024|mimes:jpg,png,bmp',
-            'used_technologies' => 'required|max:255',
             'link' => 'required|max:1000',
             'type_id' => 'nullable|exists:types,id'
                         
@@ -43,8 +42,6 @@ class StorePostRequest extends FormRequest
             'description.max' => 'La descrizione deve contenre massimo :max caratteri',
             'src.required' => ' Devi inserire un immagine per il progetto',
             'src.max' => "L'url dell'immagine deve contenre massimo :max caratteri",
-            'used_technologies.required' => ' Devi inserire le tecnologie usate per il progetto',
-            'used_technologies.max' => 'Questo campo deve contenre massimo :max caratteri',
             'link.required' => ' Devi inserire il link del progetto',
             'link.max' => 'Il link deve contenre massimo :max caratteri',
             'type_id.exists' => 'ehi',

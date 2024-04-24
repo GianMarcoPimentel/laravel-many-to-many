@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->text('src');
-            $table->string('used_technologies');
             $table->text('link');
             $table->timestamps();
         });

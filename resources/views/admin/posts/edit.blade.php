@@ -53,16 +53,6 @@
     @enderror
 
 
-    <div class="mb-3 ">
-      <label class="form-label" for="used_technologies">Tecnologie usate</label>
-      <input type="text" class="form-control @error('used_technologies') is-invalid @enderror " id="used_technologies" name=" used_technologies" value="{{old('used_technologies') ?? $post->used_technologies}}">
-    </div>
-    @error('used_technologies')
-    <div class="alert alert-danger">
-      {{$message}}
-    </div>
-    @enderror
-
       
     <div class="mb-3 ">
       <label class="form-label" for="link">Link GitHub</label>
